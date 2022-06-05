@@ -8,6 +8,7 @@ import {
   Typography
 } from '@mui/material';
 import { CommodityMap } from '../../data/commodities';
+import './CommodityBlock.css';
 
 type CommodityBlockProps = {
   title: string,
@@ -17,10 +18,11 @@ type CommodityBlockProps = {
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white
+    color: theme.palette.common.white,
+    fontSize: 20
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14
+    fontSize: 20
   }
 }));
 
@@ -43,15 +45,15 @@ export class CommodityBlock extends React.Component<CommodityBlockProps> {
   public render() {
     return (
       <>
-        <Typography variant='h3' sx={{ color: '#219ebc', margin: '8px 0'}}>
+        <Typography variant='h3' sx={{ color: '#219ebc', margin: '8px 0' }}>
           {this.props.title}
         </Typography>
 
-        <Table>
+        <Table className='CommodityBlockTable'>
           <TableHead>
             <StyledTableRow>
-              <StyledTableCell sx={{ fontWeight: 'bolder', color: '#fb8500' }}>商品名</StyledTableCell>
               <StyledTableCell sx={{ fontWeight: 'bolder', color: '#fb8500' }}>商品代码</StyledTableCell>
+              <StyledTableCell sx={{ fontWeight: 'bolder', color: '#fb8500' }}>商品名称</StyledTableCell>
               <StyledTableCell sx={{ fontWeight: 'bolder', color: '#fb8500' }}>搜索代码</StyledTableCell>
             </StyledTableRow>
           </TableHead>
@@ -66,6 +68,8 @@ export class CommodityBlock extends React.Component<CommodityBlockProps> {
             ))}
           </TableBody>
         </Table>
+
+        <br />
       </>
     );
   }
